@@ -20,8 +20,8 @@ public:
     {
         head = NULL;
         counter = 0;
-        wrongNode.id = 0;
-        wrongNode.gpa = 0;
+        wrongNode.id = -1;
+        wrongNode.gpa = -1;
         wrongNode.gender = '#';
         wrongNode.next = NULL;
     }
@@ -127,34 +127,6 @@ public:
             continue;
         return *(ptr->next) ;
     }
-    int get_index_data(int index)
-    {
-        int k;
-        node *ptr;
-        if(head == NULL)
-            return wrongNode.id;
-        if(index == 1);
-          //  return read_first();
-        ptr = head;
-        for(k = 1 ; k < index ; k++)
-        {
-            ptr = ptr->next;
-            if(ptr == NULL)
-                return wrongNode.id;
-        }
-        return ptr->id;
-    }
-    node get_id_data(int ID)
-    {
-        node *ptr;
-// if(head == NULL) return wrongNode;
-        for(ptr = head ; ptr != NULL ; ptr = ptr->next)
-        {
-            if(ptr->id == ID)
-                return *ptr;
-        }
-        return wrongNode;
-    }
     void delete_first(void)
     {
         if(head == NULL)
@@ -183,13 +155,11 @@ public:
     {
         if (head ==NULL)
             return;
-
         if(n==0)
         {
             delete_first();
             return;
         }
-
         node *p, *temp;
         p= head;
         for (int i =1 ; i<n; i++)
@@ -200,7 +170,6 @@ public:
         p -> next = temp ->next;
 
         delete (temp);
-
     }
     void delete_id(int ID)
     {
@@ -235,7 +204,6 @@ public:
             free (temp);
         }
     }
-
     void delete_all(void)
     {
         if (head==NULL)
@@ -256,7 +224,6 @@ public:
         }
         head =NULL;
     }
-
     void sort_id(void)
     {
         if (head==NULL || head->next==NULL)
@@ -292,7 +259,35 @@ public:
             last_index--;
         }
     }
-
+    int get_index_data(int index)
+    {
+        int k;
+        node *ptr;
+        if(head == NULL)
+            return wrongNode.id;
+        if(index == 0)
+            return read_first().id;
+        ptr = head;
+        for(k = 0 ; k < index ; k++)
+        {
+            ptr = ptr->next;
+            if(ptr == NULL)
+                return wrongNode.id;
+        }
+        return ptr->id;
+    }
+    node get_id_data(int ID)
+    {
+        node *ptr;
+        if(head == NULL)
+            return wrongNode;
+        for(ptr = head ; ptr != NULL ; ptr = ptr->next)
+        {
+            if(ptr->id == ID)
+                return *ptr;
+        }
+        return wrongNode;
+    }
     void print_list(void)
     {
         int index = 0;
@@ -308,8 +303,7 @@ public:
         cout<< "========================================\n\n";
     }
 
-    int search_id(int ID) {}
-    int get_counter(void) {}
+
 };
 
 int main(void)
@@ -323,18 +317,19 @@ int main(void)
     {
         cout<<"To exit press 0\n";
         cout<<"To print the linked list enter 1\n";
-        cout<<"To get number_of_nodes enter 2\n";
-        cout<<"To insert_first node enter 3\n";
-        cout<<"To insert_last node enter 4\n";
-        cout<<"To insert_id_order node enter 5\n";
-        cout<<"To insert_index node enter 6\n";
-        cout<<"To delete_first node enter 7\n";
-        cout<<"To delete_last node enter 8\n";
-        cout<<"To delete_index node enter 9\n";
-        cout<<"To delete_id node enter 10\n";
-        cout<<"To delete_all node enter 11\n";
-        cout<<"To sort_id all nodes enter 12\n";
-        cout<<"To get_index_data all nodes enter 13\n";
+        cout<<"To get number of nodes enter 2\n";
+        cout<<"To insert first node enter 3\n";
+        cout<<"To insert last node enter 4\n";
+        cout<<"To insert in id order node enter 5\n";
+        cout<<"To insert node using index enter 6\n";
+        cout<<"To delete first node enter 7\n";
+        cout<<"To delete last node enter 8\n";
+        cout<<"To delete node from index enter 9\n";
+        cout<<"To delete node from id enter 10\n";
+        cout<<"To delete all nodes enter 11\n";
+        cout<<"To sort all nodes with id enter 12\n";
+        cout<<"To get data from node index enter 13\n";
+        cout<<"To get data from node id enter 14\n";
         cout<<"Your Choice: ";
         cin>>input;
 
@@ -415,6 +410,16 @@ int main(void)
             cout<< "Enter n:\n";
             cin >>n ;
             cout<<list1.get_index_data(n)<<endl;
+            break;
+
+        case 14 :
+            cout<< "Enter ID:\n";
+            cin >>n ;
+            struct node tempNode ;
+            tempNode = list1.get_id_data(n);
+            cout <<"id\t" << "GPA\t" << "Gender\n";
+            cout<< "----------------------------------------\n";
+            cout <<tempNode.id << "\t" << tempNode.gpa << "\t" << tempNode.gender << "\n";
             break;
 
         default:

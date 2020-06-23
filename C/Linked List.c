@@ -18,7 +18,7 @@ u8 no_nodes = 0 ;
 	 printf("\nPlease Enter Node Value: ");
 	 scanf("%d",&ip);
 					 
-	 if(head==NULL)  //create Head ------we can use(no_nodes==0)but if we deleted all the nodes we will get error
+	 if(head==NULL)  //create Head ------we can use(no_nodes==0)but, if we deleted all nodes we will get error
 	 {
 		 printf("\ncreating head... \n");
 		 
@@ -48,7 +48,7 @@ u8 no_nodes = 0 ;
  
  void print_list (void)
  {
-	 if (head != NULL) // we can use (no_nodes>0) but if we deleted all the nodes we will get error
+	 if (head != NULL) // we can use (no_nodes>0) but, if we deleted all nodes we will get error
 	 {
 	 u8 i=1 ;
 	 node *pnt ;
