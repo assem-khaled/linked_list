@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1578524696 source:c:\users\assem\desktop\code\c++\linked_list\main.cpp
+	<iostream>
+	<conio.h>
+	<cstdlib>
+
+1592947254 source:c:\users\assem\desktop\git\linked_list\c++\main.cpp
+	<iostream>
+	<conio.h>
+	<cstdlib>
+
