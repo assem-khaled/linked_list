@@ -15,7 +15,7 @@
 - get node data from node index (head node starts with 0)
 - get node data from node ID   
 
-any function returns -1 in case of wrong or nonexistent data
+All function returns -1 in case of wrong or nonexistent data
 ### C implementation offers the following functions:
 - print the linked list
 - Add node
